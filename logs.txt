@@ -1,0 +1,528 @@
+halit.salih@Halits-MacBook-Pro Final % python3 test.py
+Start Time: 2025-06-28 20:29:30
+
+
+Loading the dataset from with specified column names...
+########################################################################################
+Taking a random sample of 100000 rows from the dataset...
+Sampled dataset loaded successfully with correct column names!
+Shape of the dataset: (100000, 29)
+
+First 5 rows of the dataset with correct headers:
+         class_label  lepton_pT  lepton_eta  lepton_phi  missing_energy_magnitude  missing_energy_phi  jet_1_pt  jet_1_eta  jet_1_phi  ...  jet_4_phi  jet_4_b-tag      m_jj     m_jjj      m_lv     m_jlv      m_bb     m_wbb    m_wwbb
+3967303          0.0   1.138683   -0.726635   -0.005790                  0.204118            0.153842  1.585904  -0.045576  -1.448527  ...   0.073642     0.000000  1.790497  1.730592  0.980587  0.743065  2.378752  1.534863  1.227558
+5946179          1.0   0.404633    1.014821   -1.050041                  1.136441           -1.403536  3.218436  -1.944837   0.801788  ...  -0.912542     0.000000  1.072789  0.649697  0.981147  2.004577  0.521853  1.246037  1.461494
+6910558          0.0   1.137585    0.325251    1.453598                  0.804114            0.893516  0.418095  -1.164536  -0.585919  ...  -0.982461     3.101961  0.816500  0.933867  0.988956  0.852772  0.415455  0.737194  0.691437
+3414332          0.0   1.380438   -0.595149   -0.727112                  0.465392           -0.057453  0.399224  -0.076273   1.080084  ...   1.129085     0.000000  0.563342  0.857068  0.992465  0.875139  0.512037  0.686362  0.887047
+5840458          1.0   0.962628    1.191110   -1.161568                  1.541759            0.569159  1.337374   0.810973   0.458075  ...   1.309431     3.101961  1.596246  1.146864  1.687726  1.178736  0.925320  1.094308  0.991339
+
+[5 rows x 29 columns]
+
+--- DataFrame Info (with correct columns) ---
+<class 'pandas.core.frame.DataFrame'>
+Index: 100000 entries, 3967303 to 6832497
+Data columns (total 29 columns):
+ #   Column                    Non-Null Count   Dtype  
+---  ------                    --------------   -----  
+ 0   class_label               100000 non-null  float64
+ 1   lepton_pT                 100000 non-null  float64
+ 2   lepton_eta                100000 non-null  float64
+ 3   lepton_phi                100000 non-null  float64
+ 4   missing_energy_magnitude  100000 non-null  float64
+ 5   missing_energy_phi        100000 non-null  float64
+ 6   jet_1_pt                  100000 non-null  float64
+ 7   jet_1_eta                 100000 non-null  float64
+ 8   jet_1_phi                 100000 non-null  float64
+ 9   jet_1_b-tag               100000 non-null  float64
+ 10  jet_2_pt                  100000 non-null  float64
+ 11  jet_2_eta                 100000 non-null  float64
+ 12  jet_2_phi                 100000 non-null  float64
+ 13  jet_2_b-tag               100000 non-null  float64
+ 14  jet_3_pt                  100000 non-null  float64
+ 15  jet_3_eta                 100000 non-null  float64
+ 16  jet_3_phi                 100000 non-null  float64
+ 17  jet_3_b-tag               100000 non-null  float64
+ 18  jet_4_pt                  100000 non-null  float64
+ 19  jet_4_eta                 100000 non-null  float64
+ 20  jet_4_phi                 100000 non-null  float64
+ 21  jet_4_b-tag               100000 non-null  float64
+ 22  m_jj                      100000 non-null  float64
+ 23  m_jjj                     100000 non-null  float64
+ 24  m_lv                      100000 non-null  float64
+ 25  m_jlv                     100000 non-null  float64
+ 26  m_bb                      100000 non-null  float64
+ 27  m_wbb                     100000 non-null  float64
+ 28  m_wwbb                    100000 non-null  float64
+dtypes: float64(29)
+memory usage: 22.9 MB
+
+--- Descriptive Statistics (with correct columns) ---
+         class_label      lepton_pT     lepton_eta     lepton_phi  missing_energy_magnitude  missing_energy_phi       jet_1_pt  ...           m_jj          m_jjj           m_lv          m_jlv           m_bb          m_wbb         m_wwbb
+count  100000.000000  100000.000000  100000.000000  100000.000000             100000.000000       100000.000000  100000.000000  ...  100000.000000  100000.000000  100000.000000  100000.000000  100000.000000  100000.000000  100000.000000
+mean        0.528070       0.992554      -0.000602      -0.004260                  0.999137           -0.002249       0.990098  ...       1.033667       1.025067       1.050058       1.011071       0.972753       1.033415       0.959866
+std         0.499214       0.568334       1.008224       1.006271                  0.601586            1.005826       0.476736  ...       0.672248       0.378881       0.164294       0.399550       0.525784       0.365025       0.311864
+min         0.000000       0.274697      -2.434976      -1.742508                  0.003814           -1.743905       0.145381  ...       0.102053       0.234663       0.295962       0.339518       0.059529       0.353780       0.388232
+25%         0.000000       0.588923      -0.741244      -0.878589                  0.576816           -0.872066       0.677161  ...       0.789445       0.846455       0.985744       0.768995       0.672989       0.819720       0.771336
+50%         1.000000       0.853737      -0.000054      -0.005790                  0.891782           -0.003008       0.893170  ...       0.893912       0.950657       0.989826       0.917474       0.873202       0.948311       0.872382
+75%         1.000000       1.241717       0.739188       0.866555                  1.293416            0.866857       1.169916  ...       1.024143       1.085807       1.020552       1.145310       1.137996       1.141776       1.059431
+max         1.000000       8.749847       2.432920       1.743236                  9.632102            1.743196       6.844616  ...      21.860922      10.939556       5.559782      10.567759      10.452003       7.070516       5.289892
+
+[8 rows x 29 columns]
+########################################################################################
+
+Performing outlier analysis using the IQR method...
+
+--- Feature: lepton_pT ---
+  Q1: 0.5889
+  Q3: 1.2417
+  IQR: 0.6528
+  Lower Bound: -0.3903
+  Upper Bound: 2.2209
+  Number of Outliers: 3815 (3.82%)
+
+--- Feature: lepton_eta ---
+  Q1: -0.7412
+  Q3: 0.7392
+  IQR: 1.4804
+  Lower Bound: -2.9619
+  Upper Bound: 2.9598
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: lepton_phi ---
+  Q1: -0.8786
+  Q3: 0.8666
+  IQR: 1.7451
+  Lower Bound: -3.4963
+  Upper Bound: 3.4843
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: missing_energy_magnitude ---
+  Q1: 0.5768
+  Q3: 1.2934
+  IQR: 0.7166
+  Lower Bound: -0.4981
+  Upper Bound: 2.3683
+  Number of Outliers: 2989 (2.99%)
+
+--- Feature: missing_energy_phi ---
+  Q1: -0.8721
+  Q3: 0.8669
+  IQR: 1.7389
+  Lower Bound: -3.4804
+  Upper Bound: 3.4752
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: jet_1_pt ---
+  Q1: 0.6772
+  Q3: 1.1699
+  IQR: 0.4928
+  Lower Bound: -0.0620
+  Upper Bound: 1.9090
+  Number of Outliers: 4991 (4.99%)
+
+--- Feature: jet_1_eta ---
+  Q1: -0.6892
+  Q3: 0.6842
+  IQR: 1.3734
+  Lower Bound: -2.7494
+  Upper Bound: 2.7444
+  Number of Outliers: 686 (0.69%)
+
+--- Feature: jet_1_phi ---
+  Q1: -0.8621
+  Q3: 0.8761
+  IQR: 1.7382
+  Lower Bound: -3.4695
+  Upper Bound: 3.4834
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: jet_1_b-tag ---
+  Q1: 0.0000
+  Q3: 2.1731
+  IQR: 2.1731
+  Lower Bound: -3.2596
+  Upper Bound: 5.4327
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: jet_2_pt ---
+  Q1: 0.6538
+  Q3: 1.2004
+  IQR: 0.5465
+  Lower Bound: -0.1660
+  Upper Bound: 2.0202
+  Number of Outliers: 3967 (3.97%)
+
+--- Feature: jet_2_eta ---
+  Q1: -0.7013
+  Q3: 0.6917
+  IQR: 1.3929
+  Lower Bound: -2.7907
+  Upper Bound: 2.7811
+  Number of Outliers: 407 (0.41%)
+
+--- Feature: jet_2_phi ---
+  Q1: -0.8829
+  Q3: 0.8588
+  IQR: 1.7417
+  Lower Bound: -3.4955
+  Upper Bound: 3.4714
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: jet_2_b-tag ---
+  Q1: 0.0000
+  Q3: 2.2149
+  IQR: 2.2149
+  Lower Bound: -3.3223
+  Upper Bound: 5.5372
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: jet_3_pt ---
+  Q1: 0.6498
+  Q3: 1.2218
+  IQR: 0.5720
+  Lower Bound: -0.2082
+  Upper Bound: 2.0798
+  Number of Outliers: 3204 (3.20%)
+
+--- Feature: jet_3_eta ---
+  Q1: -0.7062
+  Q3: 0.6992
+  IQR: 1.4054
+  Lower Bound: -2.8143
+  Upper Bound: 2.8074
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: jet_3_phi ---
+  Q1: -0.8656
+  Q3: 0.8775
+  IQR: 1.7431
+  Lower Bound: -3.4802
+  Upper Bound: 3.4921
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: jet_3_b-tag ---
+  Q1: 0.0000
+  Q3: 2.5482
+  IQR: 2.5482
+  Lower Bound: -3.8223
+  Upper Bound: 6.3706
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: jet_4_pt ---
+  Q1: 0.6168
+  Q3: 1.2236
+  IQR: 0.6068
+  Lower Bound: -0.2934
+  Upper Bound: 2.1338
+  Number of Outliers: 3257 (3.26%)
+
+--- Feature: jet_4_eta ---
+  Q1: -0.7125
+  Q3: 0.7133
+  IQR: 1.4258
+  Lower Bound: -2.8512
+  Upper Bound: 2.8520
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: jet_4_phi ---
+  Q1: -0.8687
+  Q3: 0.8666
+  IQR: 1.7353
+  Lower Bound: -3.4717
+  Upper Bound: 3.4696
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: jet_4_b-tag ---
+  Q1: 0.0000
+  Q3: 3.1020
+  IQR: 3.1020
+  Lower Bound: -4.6529
+  Upper Bound: 7.7549
+  Number of Outliers: 0 (0.00%)
+
+--- Feature: m_jj ---
+  Q1: 0.7894
+  Q3: 1.0241
+  IQR: 0.2347
+  Lower Bound: 0.4374
+  Upper Bound: 1.3762
+  Number of Outliers: 13987 (13.99%)
+
+--- Feature: m_jjj ---
+  Q1: 0.8465
+  Q3: 1.0858
+  IQR: 0.2394
+  Lower Bound: 0.4874
+  Upper Bound: 1.4448
+  Number of Outliers: 7357 (7.36%)
+
+--- Feature: m_lv ---
+  Q1: 0.9857
+  Q3: 1.0206
+  IQR: 0.0348
+  Lower Bound: 0.9335
+  Upper Bound: 1.0728
+  Number of Outliers: 19811 (19.81%)
+
+--- Feature: m_jlv ---
+  Q1: 0.7690
+  Q3: 1.1453
+  IQR: 0.3763
+  Lower Bound: 0.2045
+  Upper Bound: 1.7098
+  Number of Outliers: 5037 (5.04%)
+
+--- Feature: m_bb ---
+  Q1: 0.6730
+  Q3: 1.1380
+  IQR: 0.4650
+  Lower Bound: -0.0245
+  Upper Bound: 1.8355
+  Number of Outliers: 6004 (6.00%)
+
+--- Feature: m_wbb ---
+  Q1: 0.8197
+  Q3: 1.1418
+  IQR: 0.3221
+  Lower Bound: 0.3366
+  Upper Bound: 1.6249
+  Number of Outliers: 6194 (6.19%)
+
+--- Feature: m_wwbb ---
+  Q1: 0.7713
+  Q3: 1.0594
+  IQR: 0.2881
+  Lower Bound: 0.3392
+  Upper Bound: 1.4916
+  Number of Outliers: 5933 (5.93%)
+
+Outlier analysis complete for all features.
+########################################################################################
+
+Handling outliers by replacing them with IQR-based threshold values...
+Outlier handling complete for all features in higgs_sampled_df.
+########################################################################################
+
+Applying MinMaxScaler to scale all numerical features to the [0, 1] range...
+Feature scaling complete! Displaying the first 5 rows of the scaled features:
+         class_label  lepton_pT  lepton_eta  lepton_phi  missing_energy_magnitude  missing_energy_phi  jet_1_pt  jet_1_eta  jet_1_phi  ...  jet_4_phi  jet_4_b-tag      m_jj     m_jjj      m_lv     m_jlv      m_bb     m_wbb    m_wwbb
+3967303          0.0   0.443933    0.350940    0.498235                  0.084713            0.544219  0.816777   0.492159   0.084047  ...   0.521027          0.0  1.000000  1.000000  0.337960  0.294504  1.000000  0.929196  0.760714
+5946179          1.0   0.066764    0.708684    0.198657                  0.479013            0.097608  1.000000   0.146449   0.730190  ...   0.238134          0.0  0.676817  0.169489  0.341982  1.000000  0.260321  0.701967  0.972739
+6910558          0.0   0.443368    0.567027    0.916908                  0.338465            0.756336  0.154629   0.288482   0.331731  ...   0.218077          1.0  0.403819  0.466301  0.398067  0.374566  0.200412  0.301644  0.274806
+3414332          0.0   0.568151    0.377951    0.291300                  0.195211            0.483626  0.143929   0.486572   0.810098  ...   0.823788          0.0  0.134155  0.386085  0.423269  0.390889  0.254794  0.261653  0.452096
+5840458          1.0   0.353472    0.744898    0.166662                  0.650431            0.663320  0.675860   0.648071   0.631498  ...   0.875521          1.0  1.000000  0.688773  1.000000  0.612450  0.487501  0.582597  0.546620
+
+[5 rows x 29 columns]
+########################################################################################
+
+Applying Mutual Information for feature selection to select the top 15 features...
+Selected Top 15 Features based on Mutual Information:
+['lepton_pT', 'lepton_eta', 'missing_energy_magnitude', 'jet_1_pt', 'jet_1_b-tag', 'jet_2_b-tag', 'jet_3_pt', 'jet_3_b-tag', 'jet_4_b-tag', 'm_jj', 'm_jjj', 'm_jlv', 'm_bb', 'm_wbb', 'm_wwbb']
+
+Dataset updated with only the top 15 selected features.
+New shape of the dataset: (100000, 16)
+
+First 5 rows of the dataset with selected features:
+         lepton_pT  lepton_eta  missing_energy_magnitude  jet_1_pt  jet_1_b-tag  jet_2_b-tag  jet_3_pt  jet_3_b-tag  jet_4_b-tag      m_jj     m_jjj     m_jlv      m_bb     m_wbb    m_wwbb  class_label
+3967303   0.443933    0.350940                  0.084713  0.816777          0.5          1.0  0.519267          0.0          0.0  1.000000  1.000000  0.294504  1.000000  0.929196  0.760714          0.0
+5946179   0.066764    0.708684                  0.479013  1.000000          0.0          1.0  1.000000          0.0          0.0  0.676817  0.169489  1.000000  0.260321  0.701967  0.972739          1.0
+6910558   0.443368    0.567027                  0.338465  0.154629          0.0          0.0  0.268240          1.0          1.0  0.403819  0.466301  0.374566  0.200412  0.301644  0.274806          0.0
+3414332   0.568151    0.377951                  0.195211  0.143929          1.0          1.0  0.348305          0.0          0.0  0.134155  0.386085  0.390889  0.254794  0.261653  0.452096          0.0
+5840458   0.353472    0.744898                  0.650431  0.675860          0.5          0.0  0.340376          0.0          1.0  1.000000  0.688773  0.612450  0.487501  0.582597  0.546620          1.0
+########################################################################################
+Starting Nested Cross-Validation for Modeling and Evaluation...
+Starting Outer Loop (5-fold CV)...
+
+Outer Fold: Training data shape (80000, 15), Test data shape (20000, 15)
+  Processing KNN in current Outer Fold...
+    KNN: Best Inner CV ROC AUC: 0.7219 with params: {'n_neighbors': 11}
+    KNN: Outer Test Performance:
+      Accuracy: 0.6614
+      Precision: 0.6625
+      Recall: 0.7314
+      F1 Score: 0.6953
+      ROC AUC: 0.7222
+  Processing SVM in current Outer Fold...
+    SVM: Best Inner CV ROC AUC: 0.7787 with params: {'C': 10, 'kernel': 'rbf'}
+    SVM: Outer Test Performance:
+      Accuracy: 0.7128
+      Precision: 0.7110
+      Recall: 0.7687
+      F1 Score: 0.7387
+      ROC AUC: 0.7811
+  Processing MLP in current Outer Fold...
+    MLP: Best Inner CV ROC AUC: 0.7964 with params: {'activation': 'relu', 'hidden_layer_sizes': (100,)}
+    MLP: Outer Test Performance:
+      Accuracy: 0.7157
+      Precision: 0.7494
+      Recall: 0.6933
+      F1 Score: 0.7203
+      ROC AUC: 0.7962
+  Processing XGBoost in current Outer Fold...
+    XGBoost: Best Inner CV ROC AUC: 0.8081 with params: {'colsample_bytree': 0.9, 'learning_rate': 0.05, 'max_depth': 7, 'n_estimators': 300, 'subsample': 0.9}
+    XGBoost: Outer Test Performance:
+      Accuracy: 0.7280
+      Precision: 0.7420
+      Recall: 0.7433
+      F1 Score: 0.7427
+      ROC AUC: 0.8081
+
+Outer Fold: Training data shape (80000, 15), Test data shape (20000, 15)
+  Processing KNN in current Outer Fold...
+    KNN: Best Inner CV ROC AUC: 0.7203 with params: {'n_neighbors': 11}
+    KNN: Outer Test Performance:
+      Accuracy: 0.6652
+      Precision: 0.6643
+      Recall: 0.7399
+      F1 Score: 0.7001
+      ROC AUC: 0.7250
+  Processing SVM in current Outer Fold...
+    SVM: Best Inner CV ROC AUC: 0.7773 with params: {'C': 10, 'kernel': 'rbf'}
+    SVM: Outer Test Performance:
+      Accuracy: 0.7123
+      Precision: 0.7086
+      Recall: 0.7729
+      F1 Score: 0.7394
+      ROC AUC: 0.7819
+  Processing MLP in current Outer Fold...
+    MLP: Best Inner CV ROC AUC: 0.7964 with params: {'activation': 'relu', 'hidden_layer_sizes': (100,)}
+    MLP: Outer Test Performance:
+      Accuracy: 0.7215
+      Precision: 0.7248
+      Recall: 0.7618
+      F1 Score: 0.7428
+      ROC AUC: 0.7997
+  Processing XGBoost in current Outer Fold...
+    XGBoost: Best Inner CV ROC AUC: 0.8065 with params: {'colsample_bytree': 0.8, 'learning_rate': 0.05, 'max_depth': 7, 'n_estimators': 300, 'subsample': 0.7}
+    XGBoost: Outer Test Performance:
+      Accuracy: 0.7298
+      Precision: 0.7412
+      Recall: 0.7503
+      F1 Score: 0.7457
+      ROC AUC: 0.8089
+
+Outer Fold: Training data shape (80000, 15), Test data shape (20000, 15)
+  Processing KNN in current Outer Fold...
+    KNN: Best Inner CV ROC AUC: 0.7239 with params: {'n_neighbors': 11}
+    KNN: Outer Test Performance:
+      Accuracy: 0.6664
+      Precision: 0.6674
+      Recall: 0.7342
+      F1 Score: 0.6992
+      ROC AUC: 0.7262
+  Processing SVM in current Outer Fold...
+    SVM: Best Inner CV ROC AUC: 0.7776 with params: {'C': 10, 'kernel': 'rbf'}
+    SVM: Outer Test Performance:
+      Accuracy: 0.7130
+      Precision: 0.7093
+      Recall: 0.7735
+      F1 Score: 0.7400
+      ROC AUC: 0.7798
+  Processing MLP in current Outer Fold...
+    MLP: Best Inner CV ROC AUC: 0.7940 with params: {'activation': 'relu', 'hidden_layer_sizes': (100,)}
+    MLP: Outer Test Performance:
+      Accuracy: 0.7270
+      Precision: 0.7415
+      Recall: 0.7417
+      F1 Score: 0.7416
+      ROC AUC: 0.8027
+  Processing XGBoost in current Outer Fold...
+    XGBoost: Best Inner CV ROC AUC: 0.8071 with params: {'colsample_bytree': 0.8, 'learning_rate': 0.05, 'max_depth': 7, 'n_estimators': 300, 'subsample': 0.8}
+    XGBoost: Outer Test Performance:
+      Accuracy: 0.7308
+      Precision: 0.7413
+      Recall: 0.7528
+      F1 Score: 0.7470
+      ROC AUC: 0.8079
+
+Outer Fold: Training data shape (80000, 15), Test data shape (20000, 15)
+  Processing KNN in current Outer Fold...
+    KNN: Best Inner CV ROC AUC: 0.7220 with params: {'n_neighbors': 11}
+    KNN: Outer Test Performance:
+      Accuracy: 0.6687
+      Precision: 0.6686
+      Recall: 0.7388
+      F1 Score: 0.7020
+      ROC AUC: 0.7312
+  Processing SVM in current Outer Fold...
+    SVM: Best Inner CV ROC AUC: 0.7773 with params: {'C': 10, 'kernel': 'rbf'}
+    SVM: Outer Test Performance:
+      Accuracy: 0.7137
+      Precision: 0.7101
+      Recall: 0.7735
+      F1 Score: 0.7405
+      ROC AUC: 0.7832
+  Processing MLP in current Outer Fold...
+    MLP: Best Inner CV ROC AUC: 0.7949 with params: {'activation': 'relu', 'hidden_layer_sizes': (100,)}
+    MLP: Outer Test Performance:
+      Accuracy: 0.7163
+      Precision: 0.7033
+      Recall: 0.8004
+      F1 Score: 0.7487
+      ROC AUC: 0.7976
+  Processing XGBoost in current Outer Fold...
+    XGBoost: Best Inner CV ROC AUC: 0.8066 with params: {'colsample_bytree': 0.9, 'learning_rate': 0.05, 'max_depth': 7, 'n_estimators': 300, 'subsample': 0.9}
+    XGBoost: Outer Test Performance:
+      Accuracy: 0.7298
+      Precision: 0.7409
+      Recall: 0.7511
+      F1 Score: 0.7460
+      ROC AUC: 0.8098
+
+Outer Fold: Training data shape (80000, 15), Test data shape (20000, 15)
+  Processing KNN in current Outer Fold...
+    KNN: Best Inner CV ROC AUC: 0.7201 with params: {'n_neighbors': 11}
+    KNN: Outer Test Performance:
+      Accuracy: 0.6735
+      Precision: 0.6720
+      Recall: 0.7461
+      F1 Score: 0.7071
+      ROC AUC: 0.7329
+  Processing SVM in current Outer Fold...
+    SVM: Best Inner CV ROC AUC: 0.7758 with params: {'C': 10, 'kernel': 'rbf'}
+    SVM: Outer Test Performance:
+      Accuracy: 0.7148
+      Precision: 0.7125
+      Recall: 0.7712
+      F1 Score: 0.7407
+      ROC AUC: 0.7847
+  Processing MLP in current Outer Fold...
+    MLP: Best Inner CV ROC AUC: 0.7937 with params: {'activation': 'relu', 'hidden_layer_sizes': (100,)}
+    MLP: Outer Test Performance:
+      Accuracy: 0.7230
+      Precision: 0.7621
+      Recall: 0.6913
+      F1 Score: 0.7250
+      ROC AUC: 0.8057
+  Processing XGBoost in current Outer Fold...
+    XGBoost: Best Inner CV ROC AUC: 0.8053 with params: {'colsample_bytree': 0.7, 'learning_rate': 0.05, 'max_depth': 7, 'n_estimators': 300, 'subsample': 0.9}
+    XGBoost: Outer Test Performance:
+      Accuracy: 0.7322
+      Precision: 0.7425
+      Recall: 0.7546
+      F1 Score: 0.7485
+      ROC AUC: 0.8134
+
+Nested Cross-Validation Completed.
+
+Average ROC AUC across Outer Folds for each Model:
+- KNN: 0.7275
+- SVM: 0.7822
+- MLP: 0.8004
+- XGBoost: 0.8096
+########################################################################################
+
+Generating ROC Curves and Visualizing AUC Scores...
+Average ROC AUC for KNN: 0.7275
+Average ROC AUC for SVM: 0.7822
+Average ROC AUC for MLP: 0.8004
+Average ROC AUC for XGBoost: 0.8096
+2025-06-29 05:01:48.878 Python[17285:1401430] +[IMKClient subclass]: chose IMKClient_Modern
+2025-06-29 05:01:48.878 Python[17285:1401430] +[IMKInputSession subclass]: chose IMKInputSession_Modern
+2025-06-29 05:03:23.500 Python[17285:1401430] The class 'NSSavePanel' overrides the method identifier.  This method is implemented by class 'NSWindow'
+
+ROC Curve plotting completed.
+
+End Time: 2025-06-29 05:04:28
+Elapsed Time: 30898.05 seconds
+halit.salih@Halits-MacBook-Pro Final % python3 test.py
